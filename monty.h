@@ -1,5 +1,5 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef monty_h
+#define monty_h
 
 #include <stdio.h>
 #include <stdlib.h>
