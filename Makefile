@@ -1,5 +1,5 @@
 CC = gcc
-SRC =
+SRC = main.c
 OBJ = ${SRC:.c=.o}
 DEPS = monty.h
 NAME = monty
@@ -9,7 +9,7 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $^
-	clean
+	make clean
 
 %.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) $^
