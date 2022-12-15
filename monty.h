@@ -1,9 +1,22 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+/**
+ * struct global_s - strcture to store file pointer and buffer to free
+ * in case of exit
+ * @filePtr: file pointer
+ * @getlineBufffer: string from getline
+ */
+typedef struct global_s
+{
+	FILE *filePtr;
+	char *getlineBuffer;
+} global_t;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,4 +50,15 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/* Global Variables */
+extern global_t global;
+
+
+/* Function Prototypes */
+void pushF(stack_t **stack, unsigned int line_number);
+int insertNode(stack_t **stack, int value);
+int freeStack(stack_t *stack);
+void pallF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
+void (*getOpcode(stack_t **stack, char *token,
+			unsigned int line_number)(stack_t **, unsigned int);
 #endif

@@ -16,7 +16,10 @@ void pushF(stack_t **stack, unsigned int line_number)
 	str = strtok(NULL, " \t\n");
 	if (!str)
 	{
-		fprintf(stderr, "L<%u>: usage: push integer", line_number);
+		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		freeStack(*stack);
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -25,8 +28,10 @@ void pushF(stack_t **stack, unsigned int line_number)
 		{
 			if (str[i] < '0' || str[i] > '9')
 			{
-				fprintf(stderr, "L<%u>: usage: push integer\n",
-						line_number);
+				fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+				freeStack(*stack);
+				free(global.getlineBuffer);
+				fclose(global.filePtr);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -49,7 +54,8 @@ int insertNode(stack_t **stack, int value)
 	if (!stack)
 	{
 		fprintf(stderr, "Error: stack arg is NULL\n");
-		freeStack(stack);
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
 		exit(EXIT_FAILURE);
 	}
 
@@ -57,7 +63,9 @@ int insertNode(stack_t **stack, int value)
 	if (!newNode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		freeStack(stack);
+		freeStack(*stack);
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
 		exit(EXIT_FAILURE);
 	}
 	newNode->n = value;
@@ -75,13 +83,39 @@ int insertNode(stack_t **stack, int value)
  *
  * Return: 0 on success
  */
-int freeStack(stack_t **stack)
+int freeStack(stack_t *stack)
 {
-	if ((*stack)->prev)
+	if (!stack)
+		return (-1);
+	if (stack->prev)
 	{
-		freeStack((*stack)->prev)
+		freeStack(stack->prev);
 	}
-	free(*stack);
+	free(stack);
 	return (0);
 }
+
+
+/**
+ * pallF - print all elements in the stack
+ * @stack: pointer to stack
+ * @line_number: line number
+ *
+ * Return: void
+ */
+void pallF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
+{
+	stack_t *tmp = NULL;
+
+	if (!stack)
+	{
+		fprintf(stderr, "Argument passed as stack is NULL\n");
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
+		exit(EXIT_FAILURE);
+	}
+	for (tmp = *stack; tmp; tmp = tmp->prev)
+		printf("%d\n", tmp->n);
+}
+
 
