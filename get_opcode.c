@@ -17,6 +17,7 @@ void (*getOpcode(stack_t **stack, char *token, unsigned int line_number))(stack_
 		{"pall", pallF},
 		{"pint", pintF},
 		{"swap", swap_function},
+		{"pop", pop_function},
 		{NULL, NULL}
 	};
 
