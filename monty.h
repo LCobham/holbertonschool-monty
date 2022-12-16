@@ -65,5 +65,7 @@ void pintF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
 void pop_function(stack_t **tail, unsigned int line_number);
 void add_function(stack_t **tail, unsigned int line_number);
 void nop_function(stack_t **tail, unsigned int line_number);
+void subF(stack_t **stack, unsigned int line_number);
+
 
 #endif
