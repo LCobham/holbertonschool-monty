@@ -127,9 +127,16 @@ void pallF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
  * Return: void
  */
 
-void pintF(stack_t **stack, unsigned int line_number)
+void pintF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 {
 	if (!stack)
+	{
+		fprintf(stderr, "Argument passed as stack is NULL");
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
+		exit(EXIT_FAILURE);
+	}
+	if (!(*stack))
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		free(global.getlineBuffer);
