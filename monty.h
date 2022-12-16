@@ -59,7 +59,7 @@ void pushF(stack_t **stack, unsigned int line_number);
 int insertNode(stack_t **stack, int value);
 int freeStack(stack_t *stack);
 void pallF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
-void (*getOcd(stack_t **s, char *t, unsigned int ln))(stack_t **, unsigned int);
+void (*getOcd(stack_t **s, char *t, unsigned int l))(stack_t **, unsigned int);
 void swap_function(stack_t **tail, unsigned int line_number);
 void pintF(stack_t **stack, unsigned int line_number);
 void pop_function(stack_t **tail, unsigned int line_number);

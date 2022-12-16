@@ -1,15 +1,15 @@
 #include "monty.h"
 
 /**
- * getOpcode - get the function corresponding to each opcode
+ * getOcd - get the function corresponding to each opcode
  * @s: top of the stack
  * @t: opcode recieved as a token
- * @ln: line number
+ * @l: line number
  *
  * Return: function pointer on success
  */
 
-void (*getOcd(stack_t **s, char *t, unsigned int ln))(stack_t **, unsigned int)
+void (*getOcd(stack_t **s, char *t, unsigned int l))(stack_t **, unsigned int)
 {
 	int i;
 	instruction_t ar[] = {
@@ -26,7 +26,7 @@ void (*getOcd(stack_t **s, char *t, unsigned int ln))(stack_t **, unsigned int)
 		if (strcmp(ar[i].opcode, t) == 0)
 			return (ar[i].f);
 	}
-	fprintf(stderr, "L%u: unknown instruction %s\n", ln, t);
+	fprintf(stderr, "L%u: unknown instruction %s\n", l, t);
 	freeStack(*s);
 	free(global.getlineBuffer);
 	fclose(global.filePtr);
