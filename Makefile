@@ -1,5 +1,5 @@
 CC = gcc
-SRC = main.c opcode_functions.c get_opcode.c 
+SRC = main.c opcode_functions.c get_opcode.c opcode_functions2.c 
 OBJ = ${SRC:.c=.o}
 DEPS = monty.h
 NAME = monty

@@ -118,4 +118,22 @@ void pallF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number)
 		printf("%d\n", tmp->n);
 }
 
+/**
+ * pintF - print the number at the top of the stack
+ * @stack: top of the stack
+ * @line_number: line n
+ *
+ * Return: void
+ */
 
+void pintF(stack_t **stack, unsigned int line_number)
+{
+	if (!stack)
+	{
+		fprintf(stderr, "L<%u>: can't pint, stack empty\n", line_number);
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}

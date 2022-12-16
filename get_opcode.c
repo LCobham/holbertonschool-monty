@@ -15,6 +15,8 @@ void (*getOpcode(stack_t **stack, char *token, unsigned int line_number))(stack_
 	instruction_t ar[] = {
 		{"push", pushF},
 		{"pall", pallF},
+		{"pint", pintF},
+		{"swap", swap_function},
 		{NULL, NULL}
 	};
 

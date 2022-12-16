@@ -61,5 +61,6 @@ int freeStack(stack_t *stack);
 void pallF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
 void (*getOpcode(stack_t **stack, char *token, unsigned int line_number))(stack_t **, unsigned int);
 void swap_function(stack_t **tail, unsigned int line_number);
+void pintF(stack_t **stack, unsigned int line_number);
 
 #endif

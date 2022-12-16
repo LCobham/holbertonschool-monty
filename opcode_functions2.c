@@ -32,4 +32,4 @@ void swap_function(stack_t **tail, unsigned int line_number)
 
 		exit(EXIT_FAILURE);
 	}
-} 
+}
