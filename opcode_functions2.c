@@ -65,15 +65,14 @@ void pop_function(stack_t **tail, unsigned int line_number)
 		fclose(global.filePtr);
 		exit(EXIT_FAILURE);
 	}
-
 	if (*tail)
 	{
 		tmp = (*tail)->prev;
 		free(*tail);
 		*tail = tmp;
-		(*tail)->next = NULL;
+		if (tmp)
+			tmp->next = NULL;
 	}
-
 	else
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
@@ -116,7 +115,7 @@ void add_function(stack_t **tail, unsigned int line_number)
 		}
 		else
 		{
-			fprintf(stderr, "L%u: can't add, stack empty\n", line_number);
+			fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 			freeStack(*tail);
 			free(global.getlineBuffer);
 			fclose(global.filePtr);
@@ -125,7 +124,7 @@ void add_function(stack_t **tail, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't add, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		freeStack(*tail);
 		free(global.getlineBuffer);
 		fclose(global.filePtr);

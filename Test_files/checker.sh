@@ -19,6 +19,12 @@ echo -e "\nTest 7 (pop empty)"
 ./monty f7.txt
 echo -e "\nTest 8 (21131 - normal pop)"
 ./monty f8.txt
+
+echo -e "\nTest X (pop when only one element)"
+./monty f17.txt
+echo -e "\nTest X + 1 (pop Holberton)"
+./monty f18.txt
+
 echo -e "\nTest 9 (2112 swap)"
 ./monty f9.txt
 echo -e "\nTest 10 (swap 1 element)"
