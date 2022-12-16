@@ -2,14 +2,14 @@
 
 /**
  * getOpcode - get the function corresponding to each opcode
- * @stack: top of the stack
- * @token: opcode recieved as a token
- * @line_number: line number
+ * @s: top of the stack
+ * @t: opcode recieved as a token
+ * @ln: line number
  *
  * Return: function pointer on success
  */
 
-void (*getOpcode(stack_t **stack, char *token, unsigned int line_number))(stack_t **, unsigned int)
+void (*getOcd(stack_t **s, char *t, unsigned int ln))(stack_t **, unsigned int)
 {
 	int i;
 	instruction_t ar[] = {
@@ -23,11 +23,11 @@ void (*getOpcode(stack_t **stack, char *token, unsigned int line_number))(stack_
 
 	for (i = 0; ar[i].opcode; i++)
 	{
-		if (strcmp(ar[i].opcode, token) == 0)
+		if (strcmp(ar[i].opcode, t) == 0)
 			return (ar[i].f);
 	}
-	fprintf(stderr, "L<%u>: unknown instruction %s\n", line_number, token);
-	freeStack(*stack);
+	fprintf(stderr, "L%u: unknown instruction %s\n", ln, t);
+	freeStack(*s);
 	free(global.getlineBuffer);
 	fclose(global.filePtr);
 	exit(EXIT_FAILURE);

@@ -16,7 +16,7 @@ void pushF(stack_t **stack, unsigned int line_number)
 	str = strtok(NULL, " \t\n");
 	if (!str)
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		freeStack(*stack);
 		free(global.getlineBuffer);
 		fclose(global.filePtr);
@@ -24,11 +24,12 @@ void pushF(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		for (i = 0; str[i]; i++)
+		i = (str[0] == '-') ? 1 : 0;
+		for (; str[i]; i++)
 		{
 			if (str[i] < '0' || str[i] > '9')
 			{
-				fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				freeStack(*stack);
 				free(global.getlineBuffer);
 				fclose(global.filePtr);
@@ -130,7 +131,7 @@ void pintF(stack_t **stack, unsigned int line_number)
 {
 	if (!stack)
 	{
-		fprintf(stderr, "L<%u>: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		free(global.getlineBuffer);
 		fclose(global.filePtr);
 		exit(EXIT_FAILURE);

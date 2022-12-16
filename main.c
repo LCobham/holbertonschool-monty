@@ -22,13 +22,13 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		printf("Usage: monty <filename>\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fp = fopen(av[1], "r"), global.filePtr = fp;
 	if (!fp)
 	{
-		fprintf(stderr, "Couldn't open file\n");
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (check != -1)
@@ -39,7 +39,7 @@ int main(int ac, char **av)
 			token = strtok(s, " \n\t");
 			if (token)
 			{
-				fun = getOpcode(&stack, token, line_number);
+				fun = getOcd(&stack, token, line_number);
 				fun(&stack, line_number);
 			}
 		}
