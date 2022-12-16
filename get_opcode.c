@@ -18,6 +18,8 @@ void (*getOcd(stack_t **s, char *t, unsigned int l))(stack_t **, unsigned int)
 		{"pint", pintF},
 		{"swap", swap_function},
 		{"pop", pop_function},
+		{"add", add_function},
+		{"nop", nop_function},
 		{NULL, NULL}
 	};
 

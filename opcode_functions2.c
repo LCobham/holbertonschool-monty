@@ -12,7 +12,15 @@ void swap_function(stack_t **tail, unsigned int line_number)
 
 	stack_t *tmp = NULL;
 
-	if (tail)
+	if (!tail)
+	{
+		fprintf(stderr, "Argument passed as stack is NULL");
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
+		exit(EXIT_FAILURE);
+	}
+
+	if (*tail)
 	{
 		if ((*tail)->prev)
 		{
@@ -21,15 +29,21 @@ void swap_function(stack_t **tail, unsigned int line_number)
 			tmp->n = (*tail)->n;
 			(*tail)->n = aux;
 		}
+		else
+		{
+			fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+			freeStack(*tail);
+			free(global.getlineBuffer);
+			fclose(global.filePtr);
+			exit(EXIT_FAILURE);
+		}
 	}
-
 	else
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		freeStack(*tail);
 		free(global.getlineBuffer);
 		fclose(global.filePtr);
-
 		exit(EXIT_FAILURE);
 	}
 }
@@ -43,6 +57,14 @@ void swap_function(stack_t **tail, unsigned int line_number)
 void pop_function(stack_t **tail, unsigned int line_number)
 {
 	stack_t *tmp = NULL;
+
+	if (!tail)
+	{
+		fprintf(stderr, "Argument passed as stack is NULL");
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
+		exit(EXIT_FAILURE);
+	}
 
 	if (*tail)
 	{
@@ -74,7 +96,15 @@ void add_function(stack_t **tail, unsigned int line_number)
 	stack_t *tmp = NULL;
 	int aux = 0;
 
-	if (tail)
+	if (!tail)
+	{
+		fprintf(stderr, "Argument passed as stack is NULL");
+		free(global.getlineBuffer);
+		fclose(global.filePtr);
+		exit(EXIT_FAILURE);
+	}
+
+	if (*tail)
 	{
 		aux = (*tail)->n;
 
@@ -84,25 +114,33 @@ void add_function(stack_t **tail, unsigned int line_number)
 			tmp->n += aux;
 			pop_function(tail, line_number);
 		}
+		else
+		{
+			fprintf(stderr, "L%u: can't add, stack empty\n", line_number);
+			freeStack(*tail);
+			free(global.getlineBuffer);
+			fclose(global.filePtr);
+			exit(EXIT_FAILURE);
+		}
 	}
-
 	else
 	{
 		fprintf(stderr, "L%u: can't add, stack empty\n", line_number);
 		freeStack(*tail);
 		free(global.getlineBuffer);
 		fclose(global.filePtr);
-
 		exit(EXIT_FAILURE);
 	}
 }
+
 /**
  * nop_function - this function makes nothing
  *
  *@tail: tail ptr
  *@line_number: line number.
  */
-void nop_function(stack_t __attribute__ ((unused)) **tail,
-	unsigned int __attribute__ ((unused)) line_number)
+void nop_function(stack_t **tail, unsigned int line_number)
 {
+	(void) tail;
+	(void) line_number;
 }

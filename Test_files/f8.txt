@@ -1,0 +1,9 @@
+push 1
+push 2
+pall
+pop
+pall
+push 3
+pint
+pop
+pint
