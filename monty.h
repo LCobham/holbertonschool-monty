@@ -66,6 +66,9 @@ void pop_function(stack_t **tail, unsigned int line_number);
 void add_function(stack_t **tail, unsigned int line_number);
 void nop_function(stack_t **tail, unsigned int line_number);
 void subF(stack_t **stack, unsigned int line_number);
+void divF(stack_t **stack, unsigned int line_number);
+void mulF(stack_t **stack, unsigned int line_number);
+void modF(stack_t **stack, unsigned int line_number);
 
 
 #endif

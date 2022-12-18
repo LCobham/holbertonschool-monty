@@ -21,6 +21,9 @@ void (*getOcd(stack_t **s, char *t, unsigned int l))(stack_t **, unsigned int)
 		{"add", add_function},
 		{"nop", nop_function},
 		{"sub", subF},
+		{"div", divF},
+		{"mul", mulF},
+		{"mod", modF},
 		{NULL, NULL}
 	};
 
