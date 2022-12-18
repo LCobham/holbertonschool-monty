@@ -29,6 +29,8 @@ void (*getOcd(stack_t **s, char *t, unsigned int l))(stack_t **, unsigned int)
 
 	for (i = 0; ar[i].opcode; i++)
 	{
+		if (t[0] == '#')
+			return (ar[6].f); /* If first char is #, return nop function */
 		if (strcmp(ar[i].opcode, t) == 0)
 			return (ar[i].f);
 	}
