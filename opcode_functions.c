@@ -38,7 +38,7 @@ void pushF(stack_t **stack, unsigned int line_number)
 		}
 	}
 	value = atoi(str);
-	insertNode(stack, value);
+	(global.mode == 1) ? insertNode(stack, value) : insertQueueNode(stack, value);
 }
 
 /**

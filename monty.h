@@ -11,11 +11,13 @@
  * in case of exit
  * @filePtr: file pointer
  * @getlineBuffer: string from getline
+ * @mode: insertion mode (1 for stack mode, 0 for queue mode)
  */
 typedef struct global_s
 {
 	FILE *filePtr;
 	char *getlineBuffer;
+	int mode; /* 1 = stack mode; 0 = queue mode */
 } global_t;
 
 /**
@@ -73,6 +75,6 @@ void pcharF(stack_t **stack, unsigned int line_number);
 void pstrF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
 void rotlF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
 void rotrF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
-
+int insertQueueNode(stack_t **stack, int value);
 
 #endif

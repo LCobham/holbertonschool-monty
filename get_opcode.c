@@ -38,6 +38,16 @@ void (*getOcd(stack_t **s, char *t, unsigned int l))(stack_t **, unsigned int)
 		if (strcmp(ar[i].opcode, t) == 0)
 			return (ar[i].f);
 	}
+	if (strcmp(t, "stack") == 0)
+	{
+		global.mode = 1;
+		return (ar[6].f);
+	}
+	if (strcmp(t, "queue") == 0)
+	{
+		global.mode = 0;
+		return (ar[6].f);
+	}
 	fprintf(stderr, "L%u: unknown instruction %s\n", l, t);
 	freeStack(*s);
 	free(global.getlineBuffer);

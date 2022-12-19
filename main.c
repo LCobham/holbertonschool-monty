@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_t global = {NULL, NULL};
+global_t global = {NULL, NULL, 1};
 
 /**
  * main - run a Monty ByteCode file interpreter

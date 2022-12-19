@@ -28,7 +28,7 @@ void pcharF(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
-	if (tmp->n < 0 && tmp->n > 127)
+	if (tmp->n < 0 || tmp->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		free(global.getlineBuffer);
