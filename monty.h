@@ -69,6 +69,10 @@ void subF(stack_t **stack, unsigned int line_number);
 void divF(stack_t **stack, unsigned int line_number);
 void mulF(stack_t **stack, unsigned int line_number);
 void modF(stack_t **stack, unsigned int line_number);
+void pcharF(stack_t **stack, unsigned int line_number);
+void pstrF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
+void rotlF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
+void rotrF(stack_t **stack, unsigned int __attribute__ ((unused)) line_number);
 
 
 #endif

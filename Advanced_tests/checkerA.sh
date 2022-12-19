@@ -42,6 +42,34 @@ echo -e "\nTest 13: can't mod stack empty"
 echo -e "\nTest 14: regular mod (4-15-3)"
 ./monty a13.m
 
+echo -e "\nTest 15: Comment function (434)"
+./monty a14.m
+
+echo -e "\nTest 16: print a, b and c"
+./monty a15.m
+
+echo -e "\nTest 17: pchar H"
+./monty a16.m
+
+echo -e "\nTest 18: print string School"
+./monty a17.m
+
+echo -e "\nTest 19: rotl"
+./monty a18.m
+
+echo -e "\nTest 20: rotl with empty stack"
+./monty a19.m
+
+echo -e "\nTest 21: rotl with one element stack"
+./monty a20.m
+
+echo -e "\nTest 22: rotr"
+./monty a21.m
+
+
+
+
+
 
 
 
